@@ -1,36 +1,26 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
-    <meta name="author" content="@gotoariel">
-    <!-- <link rel="icon" href="favicon.ico"> -->
+<html>
+    <body>
+        <h1>Hello.</h1>
+        <p>I can provide current weather information for you. 
+            Before we start, please have ready the latitude and 
+            longitute for the location you'd like to obtain
+            weather input about. Please format the geocordinates 
+            as using the simple decimal standard coordinates: 
 
-    <title>Welcome to Casper's first Flask deployment, Robert!</title>
+            15.23456, -30.67890.
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-left">
-          <h2>Welcome to Casper's first Flask deployment, Robert!</h2>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a target="_blank" href="https://www.heroku.com/">Heroku</a></li>
-            <li><a target="_blank" href="http://flask.pocoo.org/">Flask</a></li>
-            <li><a target="_blank" href="http://jinja.pocoo.org/docs/2.9/">Jinja2</a></li>
-            <li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </body>
+            DO NOT use any of the following common formats:
+            (1) Decimal Degrees (DD)
+            (2) Degrees and Decimal Minutes (DDM)
+            (3) Degrees, Minutes, and Seconds (DMS)
+            ONLY SIMPLE DECIMAL STANDARD COORDINATES WILL WORK
+            This is a page rendered from this file.</p>
+        <form action="plot2" method="GET">
+            <label>
+                How many points to plot
+                <input name="n" />
+            </label>
+            <input type="submit" />
+        </form>
+    </body>
 </html>
