@@ -7,7 +7,7 @@ DateTime
 dill
 Flask
 gunicorn
-idna
+idna==2.9
 itsdangerous
 Jinja2
 kiwisolver
