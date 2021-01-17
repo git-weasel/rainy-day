@@ -1,24 +1,27 @@
 <html>
     <body>
         <h1>Hello.</h1>
-        <p>I can provide current weather information for you. 
-            Before we start, please have ready the latitude and 
-            longitute for the location you'd like to obtain
-            weather input about. Please format the geocordinates 
-            as using the simple decimal standard coordinates: 
-
-            15.23456, -30.67890.
-
-            DO NOT use any of the following common formats:
-            (1) Decimal Degrees (DD)
-            (2) Degrees and Decimal Minutes (DDM)
-            (3) Degrees, Minutes, and Seconds (DMS)
-            ONLY SIMPLE DECIMAL STANDARD COORDINATES WILL WORK
-            This is a page rendered from this file.</p>
-        <form action="plot2" method="GET">
+        <p>I can provide current weather information for you.\n 
+            Before we start, please have ready the latitude and\n 
+            longitute for the location you'd like to obtain\n
+            weather input about. Please format the geocordinates\n 
+            as using the simple decimal standard coordinates:\n
+            \n
+            15.23456, -30.67890.\n
+            \n
+            DO NOT use any of the following common formats:\n
+            (1) Decimal Degrees (DD)\n
+            (2) Degrees and Decimal Minutes (DDM)\n
+            (3) Degrees, Minutes, and Seconds (DMS)\n
+            ONLY SIMPLE DECIMAL STANDARD COORDINATES WILL WORK\n</p>
+        <form action="lat" method="GET">
             <label>
-                How many points to plot
-                <input name="n" />
+                Please input the latitude.
+                <input type="text" name="lat" />
+        <form action="lat" method="GET">
+            <label>
+                Please input the longitude.
+                <input type="text" name="lon" />
             </label>
             <input type="submit" />
         </form>
