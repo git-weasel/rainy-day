@@ -87,7 +87,8 @@ def forecast():
     fig.circle(x_vals, y_vals, size=8)
     fig.xaxis.axis_label = 'Houly Increments of Time'
     fig.yaxis.axis_label = 'Temperature [degrees F]'
-    return render_template('forecast.html', script0=polygon_bounding, script1=[city_or_place, state], script2=hf, graphic=show(fig))
+    g = show(fig)
+    return render_template('forecast.html', script0=polygon_bounding, script1=[city_or_place, state], script2=hf, graphic=g)
     
 #@app.route('/vis')
 #def visual_forecast():
