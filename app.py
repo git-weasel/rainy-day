@@ -7,6 +7,7 @@ import time
 import datetime
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from flask import Flask, render_template, request
 
 # Bokeh libraries
@@ -15,11 +16,12 @@ from bokeh.plotting import figure, show
 from bokeh.models import ColumnDataSource
 from bokeh.layouts import row, column, gridplot
 from bokeh.models.widgets import Tabs, Panel
-from bokeh.plotting import figure,show
+from bokeh.plotting import figure,output_file, show
 from bokeh.embed import file_html, components
 from bokeh.resources import CDN
 
 app = Flask(__name__)
+global hf
 
 @app.route('/')
 def index():
@@ -53,7 +55,7 @@ def forecast():
     ## formatted.
 
     response = requests.get(query_url)
-    print(response)
+    #print(response)
     #points_res = json.loads(response.text)
     #print(points_res)
     city_or_place = str(response.json()['properties']['relativeLocation']['properties']['city'])
@@ -71,8 +73,44 @@ def forecast():
         #starting_window
     for i in range(0, len(response_f.json()['geometry']['coordinates'][0])):
         polygon_bounding.append( [ [response_f.json()['geometry']['coordinates'][0][i][0] ], [ response_f.json()['geometry']['coordinates'][0][i][1] ] ] )
-
-    return render_template('forecast.html')
+    x_sc = list(range(0,96))
+    y_sc = list(range(10,120))
+    y_lab = 'Temperature [degrees F]'
+    x_lab = 'Houly Increments of Time'
+    y_vals = []
+    for i in range(0,96):
+        y_vals.append(hf[i][2])
+    x_vals = np.array(range(0,96))
+    source = ColumnDataSource()
+    source.data = dict(x = x_vals, y = y_vals)
+    fig = figure(plot_height=600, plot_width=720)
+    fig.circle(x_vals, y_vals, size=8)
+    fig.xaxis.axis_label = 'Houly Increments of Time'
+    fig.yaxis.axis_label = 'Temperature [degrees F]'
+    return render_template('forecast.html', script0=polygon_bounding, script1=[city_or_place, state], script2=hf, graphic=show(fig))
+    
+#@app.route('/vis')
+#def visual_forecast():
+#    affirm = str(request.args.get('vis_want'))
+#    print(affirm)
+#    if affirm == "V":
+#        x_sc = list(range(0,96))
+#        y_sc = list(range(10,120))
+#        y_lab = 'Temperature [degrees F]'
+#        x_lab = 'Houly Increments of Time'
+#        y_vals = []
+#        for i in range(0,96):
+            #y_vals[i] = hf[i][2]
+#            print(hf)
+#        x_vals = np.array(range(0,96))
+        #source = ColumnDataSource()
+        #source.data = dict(x = x_vals, y = y_vals)
+        #print(source)
+        #fig = figure(plot_height=600, plot_width=720)
+        #fig.circle(x_vals, y_vals, size=8)
+        #fig.xaxis.axis_label = 'Houly Increments of Time'
+        #fig.yaxis.axis_label = 'Temperature [degrees F]'
+#    return render_template('vis.html')#, v=fig)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

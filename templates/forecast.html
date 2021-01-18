@@ -4,9 +4,25 @@
     crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1>Hello from file!</h1>
-        {{ div | safe }}
-        {{ script | safe }}
-        <p>Describe this wonderful plot</p>
-    </body>
+        <h1>Your weather "grid" is bounded by the following geocoordintes:</h1>
+        {{ script0 | safe }}
+        <h2>The associated municipal or adminstrative area is:</h2>
+        {{ script1 | safe }}
+        <p>It looks slightly off right? That's because the National Weather Service
+        uses 2.5 square kilometer grids and associates one nearby city or town
+        as the one it returns. In urban or sub-urban areas, there will be multiple
+        nearby towns and cities not returned.</p>
+        <h3>The hourly forecast in local time of the target weather grid follows.</h3>
+        <p>The list is an hourly list of hour number, a short description of forecast
+        meterological conditions for that hour, and the forecase temperature for that 
+        hour. The data uses the current hour window as zero hour.</p>
+        {{ script2 | safe }}
+        <p>
+
+
+        <p>
+
+        {{ graphic | safe }}
+
+        </body>
 </html>
